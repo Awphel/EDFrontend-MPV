@@ -48,8 +48,11 @@ export default function SideBar() {
       name: "Sprinkler",
       logic: "False",
       pcb: "False",
-      pcbsize: 1,
-      modules: ''
+      pcbsize: 3,
+      modules:
+      [ 'motionsensor',
+      'motordriver',
+      'lightsensor' ]
     },
   ];
 
@@ -58,7 +61,7 @@ export default function SideBar() {
   <div  id="sidebar_state" className="sidebar_closed" style={{ display: "none"}}>
 
   {/* Nav LINKS DISPLAYED WHEN SIDEBAR IS expanded*/}
-    <div id="NavLinks_CLOSED" className="NavLinks_Container_OPEN" >
+    <div id="NavLinks_CLOSED" className="NavLinks_Container_OPEN">
               <ul>
                 <li className = "dash">
                   <a className = "nav-icon"
