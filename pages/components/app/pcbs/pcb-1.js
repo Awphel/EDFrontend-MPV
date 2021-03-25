@@ -22,13 +22,14 @@ export default function PCBONE() {
     </div>
 
       {loadedmodules.map((item, index) => (
-            <div onClick={() => addmoduleModal()} className="IO-module-loaded" key={index}>
+            <div className="IO-module-loaded" key={index}>
             <p>{item}</p>
-            <p>Module specs</p>
-            <img src="./icons/lock_open.png" className="lock-icon"/>
+            <div className = "control-btns">
+              <img src="./icons/lock_open.png" className="lock-icon" title = "Lock this module"/>
+              <img onClick={() => addmoduleModal()} src="./icons/edit.png" className="lock-icon" title = "Edit this module"/>
+            </div>
           </div>
         ))}
-
   </div>
 
 {/* PADDING SHORTHAND - top,right,bottom,left */}
@@ -42,6 +43,9 @@ export default function PCBONE() {
           float: left;
           width: 200px;
           height: 500px;
+        }
+        .control-btns {
+          margin-top: 5em;
         }
         .pcb-1 {
           -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
@@ -137,17 +141,15 @@ export default function PCBONE() {
           border-radius: 50%;
         }
         .lock-icon {
-          width: 40px;
-          opacity: .6;
+          width: 30px;
           cursor: pointer;
-          margin-top: 1em;
-          bottom: ;
+          margin: 1em .5em 0 .5em;
           background-color: #fff;
           padding: .5em;
           border-radius: 50%;
         }
         .lock-icon:hover {
-          opacity: 1;
+          opacity: .6;
         }
 
         ::-webkit-scrollbar {

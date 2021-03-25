@@ -1,13 +1,14 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { MessageList, PCBONE, PCBTWO, PCBTHREE } from '../../../[app].js';
 import { useRouter } from "next/router";
-
-
 
 export default function PCBSTAGE() {
   const router = useRouter();
   const  { project, pcbsize } = router.query; // Destructuring our router object
-    
+  const [number, changeSIZE] = useState('');
+
+  //This function sets the correct PCB on the stage based on project parameters
     if(pcbsize == 1) {
       var witchPCB = <PCBONE />;
     }else if (pcbsize == 2) {
@@ -16,15 +17,27 @@ export default function PCBSTAGE() {
       var witchPCB = <PCBTHREE />;
     }
 
+    function change (pcbsize){
+      if(pcbsize == 1) {
+        alert(pcbsize);
+      }else if (pcbsize == 2) {
+        witchPCB = <PCBTWO />;
+      }else {
+        var witchPCB = <PCBTHREE />;
+      }
+    }
+
+
   return (<>
 
   <div className="pcb-container">
     <div className="pcb-size-selector">
       {/* Simple IF/ELSE statements to handle project PCB size */ }
-      <img className="size-selectors" src={ pcbsize === '1' ? '/icons/1x-btn-active.svg' : '/icons/1x-btn.svg' } />
-      <img className="size-selectors" src={ pcbsize === '2' ? '/icons/2x-btn-active.svg' : '/icons/2x-btn.svg' } />
-      <img className="size-selectors" src={ pcbsize === '3' ? '/icons/3x-btn-active.svg' : '/icons/3x-btn.svg' } />
+      <img onClick={() =>change('1')} className="size-selectors" src={ pcbsize === '1' ? '/icons/1x-btn-active.svg' : '/icons/1x-btn.svg' } />
+      <img onClick={() =>change('2')} className="size-selectors" src={ pcbsize === '2' ? '/icons/2x-btn-active.svg' : '/icons/2x-btn.svg' } />
+      <img onClick={() =>changeSIZE('3')} className="size-selectors" src={ pcbsize === '3' ? '/icons/3x-btn-active.svg' : '/icons/3x-btn.svg' } />
     </div>
+
     {witchPCB}
   </div>
 
@@ -68,6 +81,11 @@ export default function PCBSTAGE() {
         .size-selectors {
           margin-left: .1em;
           margin-top: .5em;
+          transition: .3s;
+          cursor: pointer;
+        }
+        .size-selectors:hover {
+          opacity: .2;
         }
         .warning-indicator {
           width: 230px;
@@ -129,9 +147,7 @@ export default function PCBSTAGE() {
            border-radius: 10px;
            box-shadow: inset 7px 10px 12px #f0f0f0;
           }
-
-
-                `
+          `
       } < /style> < / >
     )
   }
