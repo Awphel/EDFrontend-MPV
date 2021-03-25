@@ -6,7 +6,6 @@ export default function PCBONE() {
   const  { project, pcbsize, loadedmodules } = router.query; // Destructuring our router object
 
   return (<>
-
   <div className="pcb-1">
     <div className="primary-modules">
         <div className="mcu-module">
@@ -21,7 +20,7 @@ export default function PCBONE() {
         </div>
     </div>
 
-      {loadedmodules.map((item, index) => (
+      {loadedmodules && loadedmodules.map((item, index) => (
             <div className="IO-module-loaded" key={index}>
             <p>{item}</p>
             <div className = "control-btns">

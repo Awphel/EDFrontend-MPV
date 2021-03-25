@@ -21,7 +21,7 @@ export default function PCBTWO() {
         </div>
     </div>
 
-    {loadedmodules.map((item, index) => (
+    {loadedmodules && loadedmodules.map((item, index) => (
           <div onClick={() => addmoduleModal()} className="IO-module-loaded" key={index}>
           <p>{item}</p>
           <div className = "control-btns">
